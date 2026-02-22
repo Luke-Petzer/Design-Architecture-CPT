@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-dark: #0a0c10;
+  --color-brand-accent: #A0826D;
+  --color-brand-glass: rgba(255, 255, 255, 0.03);
+  --color-brand-slate: #1a1c23;
+
+  --font-display: "Playfair Display", serif;
+  --font-body: "Satoshi", sans-serif;
+
+  /* 8px Soft Grid */
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-48: 48px;
+  --spacing-64: 64px;
+}
+
+:root {
+  /* Fluid Typography - Base 16px */
+  /* font-size_n = base * (1.618)^n */
+  --font-size-hero: clamp(4rem, 10vw + 1rem, 8.125rem);
+  /* ~130px */
+  --font-size-h1: clamp(2.5rem, 5vw + 1rem, 4.25rem);
+  --font-size-h2: clamp(2rem, 4vw + 1rem, 3.5rem);
+  --font-size-body: clamp(0.875rem, 0.2vw + 0.8rem, 1rem);
+
+  --background: #0a0c10;
+  --foreground: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+.glass-panel {
+  background: var(--color-brand-glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.text-transparent-stroke {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgba(255, 255, 255, 0.4);
+  color: transparent;
+}
+
+/* Global SVG Noise Filter Effect */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Hardware-accelerated transitions */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-x {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes scroll-indicator {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  50% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-left {
+  animation: fade-in-left 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+.animate-scale-x {
+  animation: scale-x 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
