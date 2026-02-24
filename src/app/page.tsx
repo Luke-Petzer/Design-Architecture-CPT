@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -75,10 +76,12 @@ export default function Home() {
         <section className="relative h-screen flex items-center overflow-hidden bg-[#0A0C10]">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070"
               alt="High-End Digital Workspace"
-              className="w-full h-full object-cover saturate-[1.1] brightness-[0.7] md:brightness-[0.85]"
+              className="object-cover saturate-[1.1] brightness-[0.7] md:brightness-[0.85]"
+              fill
+              priority
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent z-[5]"></div>
           </div>
@@ -111,13 +114,13 @@ export default function Home() {
               <div className="space-y-8 pt-8 text-white">
                 <div className="flex items-center gap-6 group cursor-pointer">
                   <span className="text-3xl font-serif text-[#A0826D]">01</span>
-                  <span className="text-[10px] tracking-[0.3em] text-white/40 uppercase group-hover:text-white transition-colors font-medium">
+                  <span className="text-[10px] tracking-[0.3em] text-white/60 uppercase group-hover:text-white transition-colors font-medium">
                     Technical Integration
                   </span>
                 </div>
                 <div className="flex items-center gap-6 group cursor-pointer">
                   <span className="text-3xl font-serif text-white/20">02</span>
-                  <span className="text-[10px] tracking-[0.3em] text-white/40 uppercase group-hover:text-white transition-colors font-medium">
+                  <span className="text-[10px] tracking-[0.3em] text-white/60 uppercase group-hover:text-white transition-colors font-medium">
                     Brand Sophistication
                   </span>
                 </div>
@@ -156,15 +159,18 @@ export default function Home() {
               { title: "Nexus Interface", category: "Product", img: "https://images.unsplash.com/photo-1577495508048-b635879837f1?q=80&w=2070", meta: "Infrastructure // 2024" }
             ].map((proj) => (
               <div key={proj.title} className="relative group overflow-hidden bg-[#111319] break-inside-avoid">
-                <img
-                  src={proj.img}
-                  alt={proj.title}
-                  className="w-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
-                />
+                <div className="relative aspect-[4/3] w-full overflow-hidden">
+                  <Image
+                    src={proj.img}
+                    alt={proj.title}
+                    className="grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105 object-cover"
+                    fill
+                  />
+                </div>
                 <div className="p-6 md:p-8">
                   <span className="text-[#A0826D] text-[9px] md:text-[10px] tracking-widest uppercase mb-2 block font-medium">{proj.category}</span>
                   <h3 className="text-xl md:text-2xl mb-4 italic text-white font-serif">{proj.title}</h3>
-                  <p className="text-[10px] text-white/40 uppercase tracking-widest font-medium">{proj.meta}</p>
+                  <p className="text-[10px] text-white/60 uppercase tracking-widest font-medium">{proj.meta}</p>
                 </div>
               </div>
             ))}
@@ -187,17 +193,18 @@ export default function Home() {
               { title: "Optimization", desc: "Meticulous refinery from initial deployment to sub-second performance scaling.", img: "https://images.pexels.com/photos/7931/pexels-photo-7931.jpg" }
             ].map((service) => (
               <div key={service.title} className="min-w-[280px] md:min-w-[400px] group cursor-pointer">
-                <div className="h-[350px] md:h-[500px] overflow-hidden mb-6 md:mb-8">
-                  <img
+                <div className="relative h-[350px] md:h-[500px] overflow-hidden mb-6 md:mb-8">
+                  <Image
                     src={service.img}
                     alt={service.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="transition-transform duration-700 group-hover:scale-110 object-cover"
+                    fill
                   />
                 </div>
                 <div className="flex justify-between items-start">
                   <div>
                     <h3 className="text-2xl md:text-3xl italic mb-2 font-serif">{service.title}</h3>
-                    <p className="text-[10px] md:text-xs text-black/40 tracking-wider uppercase max-w-xs font-medium lead-relaxed">{service.desc}</p>
+                    <p className="text-[10px] md:text-xs text-black/60 tracking-wider uppercase max-w-xs font-medium lead-relaxed">{service.desc}</p>
                   </div>
                   <div className="w-8 h-8 md:w-10 md:h-10 border border-[#A0826D] flex items-center justify-center text-[#A0826D] group-hover:bg-[#A0826D] group-hover:text-white transition-all">
                     {/* @ts-ignore */}
@@ -211,13 +218,6 @@ export default function Home() {
 
         {/* FOOTER / CONTACT */}
         <footer id="contact" className="relative px-6 py-20 md:px-24 md:py-32 bg-[#0A0C10] border-t border-white/5 overflow-hidden">
-          <div className="absolute right-0 bottom-0 w-1/3 h-full opacity-10 pointer-events-none hidden lg:block">
-            <img
-              src="https://images.unsplash.com/photo-1449156059431-789c6d4a8f35?q=80&w=2070"
-              alt="Abstract Design Studio"
-              className="w-full h-full object-cover"
-            />
-          </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 relative z-10 font-serif">
             <div>
               <h2 className="text-5xl md:text-8xl italic mb-8 md:mb-12 text-white leading-tight">
@@ -242,7 +242,7 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col justify-between font-sans">
-              <div className="grid grid-cols-2 gap-8 md:gap-12 text-[9px] md:text-[10px] tracking-[0.4em] uppercase opacity-60">
+              <div className="grid grid-cols-2 gap-8 md:gap-12 text-[9px] md:text-[10px] tracking-[0.4em] uppercase opacity-80">
                 <div className="flex flex-col gap-4">
                   <a href="#services" className="hover:text-[#A0826D] text-white transition-colors">Services</a>
                   <a href="#portfolio" className="hover:text-[#A0826D] text-white transition-colors">Portfolio</a>
@@ -254,7 +254,7 @@ export default function Home() {
                   <a href="#" className="hover:text-[#A0826D] text-white transition-colors">Behance</a>
                 </div>
               </div>
-              <div className="mt-16 md:mt-24 pt-8 md:pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between text-[8px] md:text-[10px] tracking-widest text-white/20 uppercase font-medium">
+              <div className="mt-16 md:mt-24 pt-8 md:pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between text-[8px] md:text-[10px] tracking-widest text-white/40 uppercase font-medium">
                 <p>© 2026 NOVA STUDIO. All Rights Reserved.</p>
                 <div className="flex gap-6 md:gap-8 mt-4 md:mt-0">
                   <a href="#" className="hover:text-white transition-colors">Privacy</a>
