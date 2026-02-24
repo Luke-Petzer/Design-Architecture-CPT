@@ -1,46 +1,40 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-dark: #0a0c10;
+  --color-brand-dark: #0A0C10;
   --color-brand-accent: #A0826D;
   --color-brand-glass: rgba(255, 255, 255, 0.03);
-  --color-brand-slate: #1a1c23;
+  --color-brand-slate: #1A1C23;
 
   --font-display: "Playfair Display", serif;
   --font-body: "Satoshi", sans-serif;
 
-  /* 8px Soft Grid */
-  --spacing-8: 8px;
-  --spacing-16: 16px;
-  --spacing-24: 24px;
-  --spacing-32: 32px;
-  --spacing-48: 48px;
-  --spacing-64: 64px;
+  /* Global 8px Base Unit */
+  --spacing: 0.25rem;
+  /* 4px (default) */
+
+  /* Custom Semantic Spacing Utilities */
+  --spacing-landscape-pad: 3rem;
+  /* 48px */
 }
 
 :root {
-  /* Fluid Typography - Base 16px */
-  /* font-size_n = base * (1.618)^n */
-  --font-size-hero: clamp(4rem, 10vw + 1rem, 8.125rem);
-  /* ~130px */
-  --font-size-h1: clamp(2.5rem, 5vw + 1rem, 4.25rem);
-  --font-size-h2: clamp(2rem, 4vw + 1rem, 3.5rem);
-  --font-size-body: clamp(0.875rem, 0.2vw + 0.8rem, 1rem);
-
-  --background: #0a0c10;
+  --accent: #A0826D;
+  --dark: #0a0c10;
+  --slate: #1a1c23;
+  --background: var(--dark);
   --foreground: #ffffff;
 }
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-body);
+  background-color: var(--dark);
+  color: #ffffff;
+  font-family: Satoshi, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -49,12 +43,12 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-display);
+  font-family: "Playfair Display", serif;
   letter-spacing: -0.01em;
 }
 
 .glass-panel {
-  background: var(--color-brand-glass);
+  background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
